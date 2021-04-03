@@ -20,6 +20,8 @@ class Navigation extends React.Component{
       <Link to ={"add"} className="nav-link">Submitteachersdata</Link>
       <Link to ={"teacher_teaches"} className="nav-link">teacher_teaches</Link>
       <Link to ={"register_student"} className="nav-link">register_student</Link>
+      
+      <Link to ={"get_attendacne"} className="nav-link">ALL Attendance</Link>
 
     </Nav>
     

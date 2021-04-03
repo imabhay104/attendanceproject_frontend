@@ -8,6 +8,7 @@ import {Container,Row,Jumbotron,Button,Col } from 'react-bootstrap';
 import UpdateComponent from './UpdateComponent';
 import teacher_teaches from './teacher_teaches';
 import register_student from './register_student';
+import allattendance from './allattendance';
 function App() {
   return (
     
@@ -22,6 +23,7 @@ function App() {
       <Route path="/attendance" exact component={UpdateComponent}  ></Route>
       <Route path="/teacher_teaches" exact component={teacher_teaches}  ></Route>
       <Route path="/register_student" exact component={register_student}  ></Route>
+      <Route path="/get_attendacne" exact component={allattendance}  ></Route>
 
       </Switch>
     </Router>

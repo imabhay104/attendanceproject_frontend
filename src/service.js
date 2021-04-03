@@ -35,6 +35,24 @@ class service {
         return axios.post("http://localhost:8080/submitstudentdata",data);
     }
 
+    getbyprn(prn)
+{
+  return axios.get('http://localhost:8080/attendance/getbyprn/',{ 
+    params: 
+    {prn: prn}},);
+
+}
+getbycourse_id(couseid)
+{
+  return axios.get('http://localhost:8080/attendance/getbycourseid',{ 
+    params: 
+    {couseid:  couseid}} );
+
+}
+
+
+
+
 
     deletebook(bookid){
         return axios.delete(URL + '/' + bookid);
