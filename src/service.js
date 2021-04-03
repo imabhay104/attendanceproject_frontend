@@ -34,12 +34,20 @@ class service {
     Submittstudent(data) {
         return axios.post("http://localhost:8080/submitstudentdata",data);
     }
+    getstudentsdata(data)
+    {
+        return axios.get("http://localhost:8080/getallstudentsdata");
+
+    }
+    submitprndetected(data) {
+        return axios.post("http://localhost:8080/submitprndetected",data);
+    }
 
     getbyprn(prn)
 {
   return axios.get('http://localhost:8080/attendance/getbyprn/',{ 
     params: 
-    {prn: prn}},);
+    {prn: prn}});
 
 }
 getbycourse_id(couseid)

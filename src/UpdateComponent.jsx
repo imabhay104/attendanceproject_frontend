@@ -10,35 +10,48 @@ class UpdateComponent extends Component {
             date:'',
             course_id: '',
             time: '',
-            present: '',
+          //  present: '',
         }
         this.changedateHandler = this.changedateHandler.bind(this);
         this.changecourse_idHandler = this.changecourse_idHandler.bind(this);
         this.changetimeHandler = this.changetimeHandler.bind(this);
-        this.changepresentHandler = this.changepresentHandler.bind(this);
+       // this.changepresentHandler = this.changepresentHandler.bind(this);
 
         this.saveOrUpdateBook = this.saveOrUpdateBook.bind(this);
     }
 
  
     componentDidMount(){
-        service.getdetected_prn().then( (res) =>{
-                let prn = res.data;
-                console.log('prn => ' + JSON.stringify(prn));
-                service.Submitdetected_prn(prn).then( (res) =>{
-                });
 
-             });
+
+        service.getstudentsdata().then( (res) =>{
+            let prn1 = res.data;
+            console.log('prn1 => ' + JSON.stringify(prn1));
+            service.submitprndetected(prn1).then( (res) =>{
+
+                service.getdetected_prn().then( (res) =>{
+                    let prn = res.data;
+                    console.log('prn => ' + JSON.stringify(prn));
+                    service.Submitdetected_prn(prn).then( (res) =>{
+                    });
+    
+                 })
+            });
+
+         });
+       ;
+             
              
      }      
     
     saveOrUpdateBook = (e) => {
         e.preventDefault();
+        
         let attendance = {
             date: this.state.date, 
             course_id: this.state.course_id, 
             time: this.state.time,
-            present: this.state.present
+            //present: this.state.present
 
         };
 
@@ -59,10 +72,12 @@ class UpdateComponent extends Component {
 
     changetimeHandler= (event) => {
         this.setState({time: event.target.value});
+       // this.setState({present: true});
+
     }
-    changepresentHandler= (event) => {
-        this.setState({present: event.target.value});
-    }
+  //  changepresentHandler= (event) => {
+    //    this.setState({present: event.target.value});
+   //}
     
 
     
@@ -100,13 +115,7 @@ class UpdateComponent extends Component {
                                                 value={this.state.time}
                                                  onChange={this.changetimeHandler}/>
                                         </div>
-                                        <div className = "form-group">
-                                            <label> present: </label>
-                                            <input placeholder="present" 
-                                            name="present" className="form-control" 
-                                                value={this.state.present}
-                                                 onChange={this.changepresentHandler}/>
-                                        </div>
+                                        
 
                                         <button className="btn btn-success" onClick={this.saveOrUpdateBook}>Save</button>
                                     </form>
