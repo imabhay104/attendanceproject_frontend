@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Navigation from './Navigationbar'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import Welcome from './Welcome';
+import Submitteachersdata from './Submitteachersdata';
+import {Container,Row,Jumbotron,Button,Col } from 'react-bootstrap';
+import UpdateComponent from './UpdateComponent';
+import teacher_teaches from './teacher_teaches';
+import register_student from './register_student';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+    <Router>
+
+    <Navigation/>
+   
+
+    <Switch>
+      <Route path="/welcome" exact component={Welcome}  ></Route>
+      <Route path="/add" exact component={Submitteachersdata}  ></Route>
+      <Route path="/attendance" exact component={UpdateComponent}  ></Route>
+      <Route path="/teacher_teaches" exact component={teacher_teaches}  ></Route>
+      <Route path="/register_student" exact component={register_student}  ></Route>
+
+      </Switch>
+    </Router>
+  )
 }
 
 export default App;
